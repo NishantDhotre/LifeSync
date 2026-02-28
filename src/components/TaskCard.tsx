@@ -1,5 +1,5 @@
 import React from 'react';
-import { View, Text, StyleSheet, TouchableOpacity } from 'react-native';
+import { View, Text, StyleSheet, TouchableOpacity, Modal, TextInput, Button } from 'react-native';
 
 export type TimeOfDay = 'morning' | 'flexible' | 'evening';
 export type TaskStatus = 'PENDING' | 'COMPLETED' | 'SKIPPED' | 'BLOCKED' | 'MISSED';
@@ -13,6 +13,7 @@ export interface TaskCardProps {
     status: TaskStatus;
     isSoft?: boolean;
     onToggleComplete: (id: string) => void;
+    onSkipTask?: (id: string, reason: string) => void;
 }
 
 export function TaskCard({
@@ -24,8 +25,11 @@ export function TaskCard({
     status,
     isSoft,
     onToggleComplete,
+    onSkipTask,
 }: TaskCardProps) {
     const isCompleted = status === 'COMPLETED';
+    const isSkipped = status === 'SKIPPED';
+    const isBlocked = status === 'BLOCKED';
 
     // Dynamic styling based on time of day mapping
     const timeColors = {
@@ -36,40 +40,85 @@ export function TaskCard({
 
     const theme = timeColors[timeOfDay];
 
-    return (
-        <TouchableOpacity
-            activeOpacity={0.8}
-            style={[
-                styles.cardcontainer,
-                isCompleted && styles.completedCard
-            ]}
-            onPress={() => onToggleComplete(id)}
-        >
-            {/* Custom Circular Checkbox */}
-            <View
-                style={[
-                    styles.checkbox,
-                    { borderColor: theme.border },
-                    isCompleted && { backgroundColor: theme.bg }
-                ]}
-            >
-                {isCompleted && (
-                    <Text style={styles.checkmark}>✓</Text>
-                )}
-            </View>
+    const [isSkipModalVisible, setSkipModalVisible] = React.useState(false);
+    const [skipReason, setSkipReason] = React.useState('');
 
-            <View style={styles.textContainer}>
-                <Text style={[
-                    styles.title,
-                    isCompleted && styles.completedText
-                ]}>
-                    {name}
-                </Text>
-                <Text style={styles.subtitle}>
-                    {category} {scheduledTime ? `• ${scheduledTime}` : ''} {isSoft ? '' : '(Mandatory)'}
-                </Text>
-            </View>
-        </TouchableOpacity>
+    const handleLongPress = () => {
+        if (onSkipTask && status === 'PENDING') {
+            setSkipModalVisible(true);
+        }
+    };
+
+    const confirmSkip = () => {
+        if (onSkipTask) {
+            onSkipTask(id, skipReason);
+        }
+        setSkipModalVisible(false);
+        setSkipReason('');
+    };
+
+    return (
+        <>
+            <TouchableOpacity
+                activeOpacity={0.8}
+                style={[
+                    styles.cardcontainer,
+                    isCompleted && styles.completedCard,
+                    isSkipped && styles.skippedCard,
+                    isBlocked && styles.blockedCard
+                ]}
+                onPress={() => status !== 'BLOCKED' && onToggleComplete(id)}
+                onLongPress={handleLongPress}
+            >
+                {/* Custom Circular Checkbox */}
+                <View
+                    style={[
+                        styles.checkbox,
+                        { borderColor: isBlocked ? '#cbd5e1' : theme.border },
+                        isCompleted && { backgroundColor: theme.bg },
+                        isSkipped && { backgroundColor: '#e2e8f0', borderColor: '#cbd5e1' },
+                        isBlocked && { backgroundColor: '#f1f5f9' }
+                    ]}
+                >
+                    {isCompleted && <Text style={styles.checkmark}>✓</Text>}
+                    {isSkipped && <Text style={styles.skippedMark}>⏭</Text>}
+                    {isBlocked && <Text style={styles.blockedMark}>🔒</Text>}
+                </View>
+
+                <View style={styles.textContainer}>
+                    <Text style={[
+                        styles.title,
+                        isCompleted && styles.completedText,
+                        isSkipped && styles.skippedText,
+                        isBlocked && styles.blockedText
+                    ]}>
+                        {name}
+                    </Text>
+                    <Text style={styles.subtitle}>
+                        {isBlocked ? 'Blocked by Inventory' : category} {scheduledTime ? `• ${scheduledTime}` : ''} {isSoft ? '' : '(Mandatory)'}
+                    </Text>
+                </View>
+            </TouchableOpacity>
+
+            <Modal visible={isSkipModalVisible} transparent={true} animationType="fade">
+                <View style={styles.modalOverlay}>
+                    <View style={styles.modalContent}>
+                        <Text style={styles.modalTitle}>Skip "{name}"?</Text>
+                        <Text style={styles.modalSub}>Are you sure you want to skip this task today?</Text>
+                        <TextInput
+                            style={styles.reasonInput}
+                            placeholder="Optional: Reason for skipping..."
+                            value={skipReason}
+                            onChangeText={setSkipReason}
+                        />
+                        <View style={styles.modalActions}>
+                            <Button title="Cancel" onPress={() => setSkipModalVisible(false)} color="#64748b" />
+                            <Button title="Skip Task" onPress={confirmSkip} color="#ef4444" />
+                        </View>
+                    </View>
+                </View>
+            </Modal>
+        </>
     );
 }
 
@@ -119,8 +168,74 @@ const styles = StyleSheet.create({
         textDecorationLine: 'line-through',
         opacity: 0.5,
     },
+    skippedText: {
+        color: '#94a3b8',
+        fontStyle: 'italic',
+    },
+    blockedText: {
+        color: '#94a3b8',
+    },
     subtitle: {
         fontSize: 12,
         color: '#64748b', // slate-500
     },
+    skippedMark: {
+        fontSize: 12,
+        color: '#94a3b8',
+    },
+    blockedMark: {
+        fontSize: 12,
+    },
+    skippedCard: {
+        backgroundColor: '#f8fafc',
+        opacity: 0.8,
+    },
+    blockedCard: {
+        backgroundColor: '#f8fafc',
+        borderColor: '#e2e8f0',
+        opacity: 0.6,
+    },
+    modalOverlay: {
+        flex: 1,
+        backgroundColor: 'rgba(0,0,0,0.4)',
+        justifyContent: 'center',
+        alignItems: 'center',
+        padding: 24,
+    },
+    modalContent: {
+        backgroundColor: 'white',
+        borderRadius: 16,
+        padding: 24,
+        width: '100%',
+        maxWidth: 400,
+        shadowColor: '#000',
+        shadowOffset: { width: 0, height: 4 },
+        shadowOpacity: 0.1,
+        shadowRadius: 12,
+        elevation: 10,
+    },
+    modalTitle: {
+        fontSize: 18,
+        fontWeight: 'bold',
+        color: '#0f172a',
+        marginBottom: 8,
+    },
+    modalSub: {
+        fontSize: 14,
+        color: '#64748b',
+        marginBottom: 16,
+    },
+    reasonInput: {
+        borderWidth: 1,
+        borderColor: '#cbd5e1',
+        borderRadius: 8,
+        padding: 12,
+        marginBottom: 20,
+        fontSize: 14,
+    },
+    modalActions: {
+        flexDirection: 'row',
+        justifyContent: 'flex-end',
+        gap: 12,
+    }
 });

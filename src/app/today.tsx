@@ -1,78 +1,67 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { View, Text, StyleSheet, ScrollView, TouchableOpacity, SafeAreaView, Dimensions } from 'react-native';
+import { router } from 'expo-router';
 import { TaskCard, TaskCardProps, TaskStatus } from '../components/TaskCard';
+import { useSQLiteContext } from 'expo-sqlite';
 
 export default function TodayScreen() {
-    // Simple state to track completed tasks for demonstration
-    const [tasks, setTasks] = useState<Omit<TaskCardProps, 'onToggleComplete'>[]>([
-        {
-            id: '1',
-            name: 'Morning Meditation',
-            category: '10 minutes',
-            timeOfDay: 'morning',
-            scheduledTime: '7:00 AM',
-            status: 'COMPLETED',
-        },
-        {
-            id: '2',
-            name: 'Hydrate (500ml)',
-            category: 'Essential',
-            timeOfDay: 'morning',
-            scheduledTime: '7:15 AM',
-            status: 'COMPLETED',
-            isSoft: false,
-        },
-        {
-            id: '3',
-            name: 'Light Stretching',
-            category: 'Holistic Wellness',
-            timeOfDay: 'morning',
-            scheduledTime: '7:30 AM',
-            status: 'PENDING',
-        },
-        {
-            id: '4',
-            name: 'Inventory Audit',
-            category: 'Supply Management',
-            timeOfDay: 'flexible',
-            scheduledTime: 'Any time',
-            status: 'PENDING',
-        },
-        {
-            id: '5',
-            name: 'Journal Entry',
-            category: 'Mental Health',
-            timeOfDay: 'flexible',
-            scheduledTime: 'Any time',
-            status: 'COMPLETED',
-        },
-        {
-            id: '6',
-            name: 'Evening Reflection',
-            category: 'Review',
-            timeOfDay: 'evening',
-            scheduledTime: '9:00 PM',
-            status: 'PENDING',
-        },
-        {
-            id: '7',
-            name: 'Digital Detox',
-            category: 'Sleep Hygiene',
-            timeOfDay: 'evening',
-            scheduledTime: '10:00 PM',
-            status: 'PENDING',
-        }
-    ]);
+    const db = useSQLiteContext();
+    const [tasks, setTasks] = useState<Omit<TaskCardProps, 'onToggleComplete'>[]>([]);
 
-    const toggleTask = (id: string) => {
-        setTasks(prev => prev.map(t => {
-            if (t.id === id) {
-                const newStatus: TaskStatus = t.status === 'COMPLETED' ? 'PENDING' : 'COMPLETED';
-                return { ...t, status: newStatus };
-            }
-            return t;
+    useEffect(() => {
+        loadTasks();
+    }, []);
+
+    const loadTasks = async () => {
+        const dateString = new Date().toISOString().split('T')[0];
+        const result = await db.getAllAsync<any>(
+            `SELECT ti.id, ti.status, t.name, t.category, t.time_of_day, t.is_soft, t.pre_task_lead_minutes
+             FROM TaskInstance ti
+             JOIN Task t ON ti.task_id = t.id
+             WHERE ti.date = ?`,
+            [dateString]
+        );
+
+        const mappedTasks = result.map(row => ({
+            id: row.id,
+            name: row.name,
+            category: row.category,
+            timeOfDay: row.time_of_day,
+            scheduledTime: 'Scheduled', // Placeholder for now
+            status: row.status as TaskStatus,
+            isSoft: row.is_soft === 1
         }));
+
+        setTasks(mappedTasks);
     };
+
+    const toggleTask = async (id: string) => {
+        const task = tasks.find(t => t.id === id);
+        if (!task || task.status === 'BLOCKED') return;
+
+        const newStatus: TaskStatus = task.status === 'COMPLETED' ? 'PENDING' : 'COMPLETED';
+
+        await db.runAsync(
+            'UPDATE TaskInstance SET status = ? WHERE id = ?',
+            [newStatus, id]
+        );
+
+        await loadTasks();
+    };
+
+    const skipTask = async (id: string) => {
+        const task = tasks.find(t => t.id === id);
+        if (!task || task.status !== 'PENDING') return;
+
+        await db.runAsync(
+            'UPDATE TaskInstance SET status = ? WHERE id = ?',
+            ['SKIPPED', id]
+        );
+
+        await loadTasks();
+    };
+
+
 
     const getTasksByTime = (time: 'morning' | 'flexible' | 'evening') => {
         return tasks.filter(t => t.timeOfDay === time);
@@ -123,7 +112,7 @@ export default function TodayScreen() {
                         <Text style={styles.sectionTitle}>Morning</Text>
                     </View>
                     {getTasksByTime('morning').map(task => (
-                        <TaskCard key={task.id} {...task} onToggleComplete={toggleTask} />
+                        <TaskCard key={task.id} {...task} onToggleComplete={toggleTask} onSkipTask={skipTask} />
                     ))}
                 </View>
 
@@ -134,7 +123,7 @@ export default function TodayScreen() {
                         <Text style={styles.sectionTitle}>Flexible</Text>
                     </View>
                     {getTasksByTime('flexible').map(task => (
-                        <TaskCard key={task.id} {...task} onToggleComplete={toggleTask} />
+                        <TaskCard key={task.id} {...task} onToggleComplete={toggleTask} onSkipTask={skipTask} />
                     ))}
                 </View>
 
@@ -145,7 +134,7 @@ export default function TodayScreen() {
                         <Text style={styles.sectionTitle}>Evening</Text>
                     </View>
                     {getTasksByTime('evening').map(task => (
-                        <TaskCard key={task.id} {...task} onToggleComplete={toggleTask} />
+                        <TaskCard key={task.id} {...task} onToggleComplete={toggleTask} onSkipTask={skipTask} />
                     ))}
                 </View>
 
@@ -161,15 +150,15 @@ export default function TodayScreen() {
                     </View>
                     <Text style={styles.navText}>New</Text>
                 </View>
-                <NavButton title="Inventory" icon="📦" />
+                <NavButton title="Inventory" icon="📦" onPress={() => router.push('/inventory')} />
                 <NavButton title="Profile" icon="👤" />
             </View>
         </SafeAreaView>
     );
 }
 
-const NavButton = ({ title, icon, active = false }: { title: string, icon: string, active?: boolean }) => (
-    <TouchableOpacity style={styles.navButton}>
+const NavButton = ({ title, icon, active = false, onPress }: { title: string, icon: string, active?: boolean, onPress?: () => void }) => (
+    <TouchableOpacity style={styles.navButton} onPress={onPress}>
         <Text style={[styles.navIcon, active && { color: '#13ec5b' }]}>{icon}</Text>
         <Text style={[styles.navText, active && { color: '#13ec5b' }]}>{title}</Text>
     </TouchableOpacity>

@@ -1,11 +1,11 @@
 import * as SQLite from 'expo-sqlite';
 
 export const initDatabase = async (db: SQLite.SQLiteDatabase) => {
-    // Enforce foreign key constraints
-    await db.execAsync('PRAGMA foreign_keys = ON;');
+  // Enforce foreign key constraints
+  await db.execAsync('PRAGMA foreign_keys = ON;');
 
-    // Create tables in order of dependency
-    await db.execAsync(`
+  // Create tables in order of dependency
+  await db.execAsync(`
     CREATE TABLE IF NOT EXISTS Task (
       id TEXT PRIMARY KEY,
       name TEXT NOT NULL,
