@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Onboarding Notifications</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#13ec5b",
+                        "background-light": "#f6f8f6",
+                        "background-dark": "#102216",
+                    },
+                    fontFamily: {
+                        "display": ["Manrope"]
+                    },
+                    borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+                },
+            },
+        }
+    </script>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background-light dark:bg-background-dark font-display text-slate-900 dark:text-slate-100 antialiased overflow-x-hidden">
+<div class="relative flex h-screen w-full max-w-[430px] mx-auto flex-col bg-background-light dark:bg-background-dark overflow-y-auto shadow-2xl">
+<!-- Top Navigation Bar -->
+<div class="flex items-center bg-background-light dark:bg-background-dark p-4 pb-2 justify-between sticky top-0 z-10">
+<div class="text-slate-900 dark:text-slate-100 flex size-12 shrink-0 items-center justify-start cursor-pointer">
+<span class="material-symbols-outlined text-2xl">arrow_back</span>
+</div>
+<h2 class="text-slate-900 dark:text-slate-100 text-lg font-bold leading-tight tracking-tight flex-1 text-center pr-12">Step 4 of 5</h2>
+</div>
+<!-- Progress Indicator -->
+<div class="flex flex-col gap-3 p-4">
+<div class="flex gap-6 justify-between">
+<p class="text-slate-900 dark:text-slate-100 text-base font-medium leading-normal">Step 4: Notifications</p>
+<p class="text-slate-500 dark:text-slate-400 text-sm font-normal leading-normal">4/5</p>
+</div>
+<div class="rounded-full bg-slate-200 dark:bg-slate-800 h-2 overflow-hidden">
+<div class="h-2 rounded-full bg-primary" style="width: 80%;"></div>
+</div>
+</div>
+<!-- Header Content -->
+<div class="px-6 py-8 flex flex-col items-center text-center">
+<div class="mb-6 flex items-center justify-center size-20 rounded-full bg-primary/20 text-primary">
+<span class="material-symbols-outlined text-4xl">notifications_active</span>
+</div>
+<h2 class="text-slate-900 dark:text-slate-100 tracking-tight text-[28px] font-bold leading-tight pb-3">Stay on Track</h2>
+<p class="text-slate-600 dark:text-slate-400 text-base font-normal leading-relaxed">
+                Enable notifications to maintain your daily routine, track your health metrics, and manage your wellness inventory effectively.
+            </p>
+</div>
+<!-- Notification Toggles List -->
+<div class="flex flex-col gap-1 px-4">
+<!-- Morning Reminder -->
+<div class="flex items-center gap-4 bg-white/50 dark:bg-white/5 px-4 min-h-[80px] py-3 rounded-xl mb-2 border border-slate-200 dark:border-slate-800">
+<div class="flex items-center gap-4 flex-1">
+<div class="text-primary flex items-center justify-center rounded-lg bg-primary/10 shrink-0 size-12">
+<span class="material-symbols-outlined">light_mode</span>
+</div>
+<div class="flex flex-col justify-center">
+<p class="text-slate-900 dark:text-slate-100 text-base font-bold leading-normal">Morning Reminder</p>
+<p class="text-slate-500 dark:text-slate-400 text-sm font-normal leading-tight">Start your day with wellness tasks</p>
+</div>
+</div>
+<div class="shrink-0">
+<label class="relative flex h-[31px] w-[51px] cursor-pointer items-center rounded-full border-none bg-slate-300 dark:bg-slate-700 p-0.5 has-[:checked]:justify-end has-[:checked]:bg-primary transition-all duration-200">
+<div class="h-full w-[27px] rounded-full bg-white shadow-md"></div>
+<input checked="" class="invisible absolute" type="checkbox"/>
+</label>
+</div>
+</div>
+<!-- Evening Check-in -->
+<div class="flex items-center gap-4 bg-white/50 dark:bg-white/5 px-4 min-h-[80px] py-3 rounded-xl mb-2 border border-slate-200 dark:border-slate-800">
+<div class="flex items-center gap-4 flex-1">
+<div class="text-primary flex items-center justify-center rounded-lg bg-primary/10 shrink-0 size-12">
+<span class="material-symbols-outlined">bedtime</span>
+</div>
+<div class="flex flex-col justify-center">
+<p class="text-slate-900 dark:text-slate-100 text-base font-bold leading-normal">Evening Check-in</p>
+<p class="text-slate-500 dark:text-slate-400 text-sm font-normal leading-tight">Log your daily progress and mood</p>
+</div>
+</div>
+<div class="shrink-0">
+<label class="relative flex h-[31px] w-[51px] cursor-pointer items-center rounded-full border-none bg-slate-300 dark:bg-slate-700 p-0.5 has-[:checked]:justify-end has-[:checked]:bg-primary transition-all duration-200">
+<div class="h-full w-[27px] rounded-full bg-white shadow-md"></div>
+<input checked="" class="invisible absolute" type="checkbox"/>
+</label>
+</div>
+</div>
+<!-- Restock Alerts -->
+<div class="flex items-center gap-4 bg-white/50 dark:bg-white/5 px-4 min-h-[80px] py-3 rounded-xl mb-2 border border-slate-200 dark:border-slate-800">
+<div class="flex items-center gap-4 flex-1">
+<div class="text-primary flex items-center justify-center rounded-lg bg-primary/10 shrink-0 size-12">
+<span class="material-symbols-outlined">inventory_2</span>
+</div>
+<div class="flex flex-col justify-center">
+<p class="text-slate-900 dark:text-slate-100 text-base font-bold leading-normal">Restock Alerts</p>
+<p class="text-slate-500 dark:text-slate-400 text-sm font-normal leading-tight">Never run out of health essentials</p>
+</div>
+</div>
+<div class="shrink-0">
+<label class="relative flex h-[31px] w-[51px] cursor-pointer items-center rounded-full border-none bg-slate-300 dark:bg-slate-700 p-0.5 has-[:checked]:justify-end has-[:checked]:bg-primary transition-all duration-200">
+<div class="h-full w-[27px] rounded-full bg-white shadow-md"></div>
+<input class="invisible absolute" type="checkbox"/>
+</label>
+</div>
+</div>
+</div>
+<!-- Illustration placeholder -->
+<div class="mt-auto px-4 py-8">
+<div class="relative w-full h-32 rounded-xl overflow-hidden bg-slate-100 dark:bg-slate-900 flex items-center justify-center">
+<div class="absolute inset-0 bg-gradient-to-tr from-primary/10 to-transparent"></div>
+<div class="flex gap-4">
+<span class="material-symbols-outlined text-slate-300 dark:text-slate-700 text-5xl">spa</span>
+<span class="material-symbols-outlined text-primary/40 text-5xl">favorite</span>
+<span class="material-symbols-outlined text-slate-300 dark:text-slate-700 text-5xl">self_improvement</span>
+</div>
+</div>
+</div>
+<!-- Bottom Action Button -->
+<div class="p-4 mb-4">
+<button class="w-full h-14 bg-primary text-background-dark font-bold text-lg rounded-xl flex items-center justify-center gap-2 hover:opacity-90 active:scale-[0.98] transition-all">
+                Continue
+                <span class="material-symbols-outlined">arrow_forward</span>
+</button>
+<button class="w-full h-10 mt-2 text-slate-500 dark:text-slate-400 font-medium text-sm rounded-xl flex items-center justify-center hover:text-slate-900 dark:hover:text-slate-100 transition-colors">
+                Maybe later
+            </button>
+</div>
+</div>
+</body></html>

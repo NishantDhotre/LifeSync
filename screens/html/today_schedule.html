@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Today's Schedule</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@200..800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#13ec5b",
+                        "mint": "#dcfce7",
+                        "lavender": "#f3e8ff",
+                        "background-light": "#f6f8f6",
+                        "background-dark": "#102216",
+                    },
+                    fontFamily: {
+                        "display": ["Manrope"]
+                    },
+                    borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+                },
+            },
+        }
+    </script>
+<style>
+        body { font-family: 'Manrope', sans-serif; }
+        .circular-checkbox:checked {
+            background-image: url("data:image/svg+xml,%3csvg viewBox='0 0 16 16' fill='white' xmlns='http://www.w3.org/2000/svg'%3e%3cpath d='M12.207 4.793a1 1 0 010 1.414l-5 5a1 1 0 01-1.414 0l-2-2a1 1 0 011.414-1.414L6.5 9.086l4.293-4.293a1 1 0 011.414 0z'/%3e%3c/svg%3e");
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background-light dark:bg-background-dark text-slate-900 dark:text-slate-100 min-h-screen flex justify-center">
+<div class="relative flex h-full min-h-screen w-full max-w-[430px] flex-col bg-background-light dark:bg-background-dark overflow-x-hidden shadow-2xl">
+<!-- Header -->
+<div class="flex items-center bg-background-light dark:bg-background-dark p-6 pb-2 justify-between sticky top-0 z-10 backdrop-blur-md bg-opacity-90">
+<div class="flex flex-col">
+<p class="text-primary text-sm font-bold uppercase tracking-wider">Monday, Oct 24</p>
+<h2 class="text-slate-900 dark:text-slate-100 text-2xl font-extrabold leading-tight tracking-tight">Today's Schedule</h2>
+</div>
+<div class="flex items-center justify-end">
+<button class="flex size-10 items-center justify-center rounded-full bg-slate-200 dark:bg-slate-800 text-slate-900 dark:text-slate-100">
+<span class="material-symbols-outlined">account_circle</span>
+</button>
+</div>
+</div>
+<!-- Progress Overview Card -->
+<div class="p-6">
+<div class="bg-primary/10 dark:bg-primary/5 rounded-xl p-5 border border-primary/20">
+<div class="flex justify-between items-end mb-3">
+<div>
+<p class="text-slate-600 dark:text-slate-400 text-sm font-medium">Daily Completion</p>
+<h3 class="text-2xl font-bold text-primary">60%</h3>
+</div>
+<p class="text-slate-500 dark:text-slate-400 text-xs mb-1">4 tasks remaining</p>
+</div>
+<div class="w-full h-3 bg-slate-200 dark:bg-slate-800 rounded-full overflow-hidden">
+<div class="h-full bg-primary rounded-full transition-all duration-500" style="width: 60%;"></div>
+</div>
+</div>
+</div>
+<!-- Sections -->
+<div class="flex-1 overflow-y-auto px-6 pb-24">
+<!-- Morning Section -->
+<div class="mb-8">
+<div class="flex items-center gap-2 mb-4">
+<span class="material-symbols-outlined text-primary text-xl">light_mode</span>
+<h3 class="text-slate-900 dark:text-slate-100 text-lg font-bold">Morning</h3>
+</div>
+<div class="space-y-3">
+<!-- Task Item -->
+<label class="flex items-center gap-4 p-4 rounded-xl bg-white dark:bg-slate-900 border border-slate-100 dark:border-slate-800 shadow-sm active:scale-95 transition-transform">
+<input checked="" class="circular-checkbox h-6 w-6 rounded-full border-2 border-primary bg-transparent text-primary focus:ring-0 checked:bg-primary" type="checkbox"/>
+<div class="flex-1">
+<p class="text-slate-900 dark:text-slate-100 font-semibold text-base line-through opacity-50">Morning Meditation</p>
+<p class="text-slate-500 text-xs">10 minutes • 7:00 AM</p>
+</div>
+</label>
+<label class="flex items-center gap-4 p-4 rounded-xl bg-white dark:bg-slate-900 border border-slate-100 dark:border-slate-800 shadow-sm active:scale-95 transition-transform">
+<input checked="" class="circular-checkbox h-6 w-6 rounded-full border-2 border-primary bg-transparent text-primary focus:ring-0 checked:bg-primary" type="checkbox"/>
+<div class="flex-1">
+<p class="text-slate-900 dark:text-slate-100 font-semibold text-base line-through opacity-50">Hydrate (500ml)</p>
+<p class="text-slate-500 text-xs">Essential • 7:15 AM</p>
+</div>
+</label>
+<label class="flex items-center gap-4 p-4 rounded-xl bg-white dark:bg-slate-900 border border-slate-100 dark:border-slate-800 shadow-sm active:scale-95 transition-transform">
+<input class="circular-checkbox h-6 w-6 rounded-full border-2 border-primary bg-transparent text-primary focus:ring-0 checked:bg-primary" type="checkbox"/>
+<div class="flex-1">
+<p class="text-slate-900 dark:text-slate-100 font-semibold text-base">Light Stretching</p>
+<p class="text-slate-500 text-xs">Holistic Wellness • 7:30 AM</p>
+</div>
+</label>
+</div>
+</div>
+<!-- Flexible Section -->
+<div class="mb-8">
+<div class="flex items-center gap-2 mb-4">
+<span class="material-symbols-outlined text-purple-400 text-xl">auto_awesome</span>
+<h3 class="text-slate-900 dark:text-slate-100 text-lg font-bold">Flexible</h3>
+</div>
+<div class="space-y-3">
+<label class="flex items-center gap-4 p-4 rounded-xl bg-white dark:bg-slate-900 border border-slate-100 dark:border-slate-800 shadow-sm active:scale-95 transition-transform">
+<input class="circular-checkbox h-6 w-6 rounded-full border-2 border-purple-400 bg-transparent text-purple-400 focus:ring-0 checked:bg-purple-400" type="checkbox"/>
+<div class="flex-1">
+<p class="text-slate-900 dark:text-slate-100 font-semibold text-base">Inventory Audit</p>
+<p class="text-slate-500 text-xs">Supply Management • Any time</p>
+</div>
+</label>
+<label class="flex items-center gap-4 p-4 rounded-xl bg-white dark:bg-slate-900 border border-slate-100 dark:border-slate-800 shadow-sm active:scale-95 transition-transform">
+<input checked="" class="circular-checkbox h-6 w-6 rounded-full border-2 border-purple-400 bg-transparent text-purple-400 focus:ring-0 checked:bg-purple-400" type="checkbox"/>
+<div class="flex-1">
+<p class="text-slate-900 dark:text-slate-100 font-semibold text-base line-through opacity-50">Journal Entry</p>
+<p class="text-slate-500 text-xs">Mental Health • Any time</p>
+</div>
+</label>
+</div>
+</div>
+<!-- Evening Section -->
+<div class="mb-8">
+<div class="flex items-center gap-2 mb-4">
+<span class="material-symbols-outlined text-blue-400 text-xl">dark_mode</span>
+<h3 class="text-slate-900 dark:text-slate-100 text-lg font-bold">Evening</h3>
+</div>
+<div class="space-y-3">
+<label class="flex items-center gap-4 p-4 rounded-xl bg-white dark:bg-slate-900 border border-slate-100 dark:border-slate-800 shadow-sm active:scale-95 transition-transform">
+<input class="circular-checkbox h-6 w-6 rounded-full border-2 border-blue-400 bg-transparent text-blue-400 focus:ring-0 checked:bg-blue-400" type="checkbox"/>
+<div class="flex-1">
+<p class="text-slate-900 dark:text-slate-100 font-semibold text-base">Evening Reflection</p>
+<p class="text-slate-500 text-xs">Review • 9:00 PM</p>
+</div>
+</label>
+<label class="flex items-center gap-4 p-4 rounded-xl bg-white dark:bg-slate-900 border border-slate-100 dark:border-slate-800 shadow-sm active:scale-95 transition-transform">
+<input class="circular-checkbox h-6 w-6 rounded-full border-2 border-blue-400 bg-transparent text-blue-400 focus:ring-0 checked:bg-blue-400" type="checkbox"/>
+<div class="flex-1">
+<p class="text-slate-900 dark:text-slate-100 font-semibold text-base">Digital Detox</p>
+<p class="text-slate-500 text-xs">Sleep Hygiene • 10:00 PM</p>
+</div>
+</label>
+</div>
+</div>
+</div>
+<!-- Bottom Navigation Bar -->
+<div class="absolute bottom-0 w-full bg-white dark:bg-slate-900 border-t border-slate-100 dark:border-slate-800 px-6 pt-3 pb-8 flex justify-between items-center z-20">
+<a class="flex flex-col items-center gap-1 text-primary" href="#">
+<span class="material-symbols-outlined">calendar_today</span>
+<p class="text-[10px] font-bold uppercase tracking-tighter">Today</p>
+</a>
+<a class="flex flex-col items-center gap-1 text-slate-400" href="#">
+<span class="material-symbols-outlined">analytics</span>
+<p class="text-[10px] font-bold uppercase tracking-tighter">Stats</p>
+</a>
+<a class="flex flex-col items-center gap-1 text-slate-400" href="#">
+<div class="bg-primary/20 p-2 -mt-8 rounded-full shadow-lg border-4 border-background-light dark:border-background-dark">
+<span class="material-symbols-outlined text-primary text-3xl">add</span>
+</div>
+<p class="text-[10px] font-bold uppercase tracking-tighter">New</p>
+</a>
+<a class="flex flex-col items-center gap-1 text-slate-400" href="#">
+<span class="material-symbols-outlined">inventory_2</span>
+<p class="text-[10px] font-bold uppercase tracking-tighter">Inventory</p>
+</a>
+<a class="flex flex-col items-center gap-1 text-slate-400" href="#">
+<span class="material-symbols-outlined">person</span>
+<p class="text-[10px] font-bold uppercase tracking-tighter">Profile</p>
+</a>
+</div>
+<!-- Float Floating Action Element (Optional for Inventory) -->
+<div class="fixed right-6 bottom-28 group">
+<button class="bg-lavender text-purple-900 p-4 rounded-2xl shadow-xl flex items-center justify-center border border-purple-200">
+<span class="material-symbols-outlined">inventory</span>
+</button>
+</div>
+</div>
+</body></html>

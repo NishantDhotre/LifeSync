@@ -1,0 +1,119 @@
+<html class="dark"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          colors: {
+            "primary": "#13ec5b",
+            "background-light": "#f6f8f6",
+            "background-dark": "#102216",
+          },
+          fontFamily: {
+            "display": ["Manrope"]
+          },
+          borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+        },
+      },
+    }
+  </script>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background-light dark:bg-background-dark font-display text-slate-900 dark:text-slate-100 antialiased">
+<div class="relative flex h-screen w-full flex-col bg-background-light dark:bg-background-dark overflow-x-hidden">
+<!-- Top App Bar -->
+<div class="flex items-center p-4 pb-2 justify-between">
+<div class="text-slate-900 dark:text-slate-100 flex size-12 shrink-0 items-center justify-start cursor-pointer">
+<span class="material-symbols-outlined" style="font-size: 24px;">arrow_back_ios</span>
+</div>
+<h2 class="text-slate-900 dark:text-slate-100 text-lg font-bold leading-tight tracking-[-0.015em] flex-1 text-center pr-12">Step 1 of 5</h2>
+</div>
+<!-- Progress Indicator -->
+<div class="flex w-full flex-row items-center justify-center gap-3 py-4">
+<div class="h-2 w-8 rounded-full bg-primary"></div>
+<div class="h-2 w-2 rounded-full bg-primary/20"></div>
+<div class="h-2 w-2 rounded-full bg-primary/20"></div>
+<div class="h-2 w-2 rounded-full bg-primary/20"></div>
+<div class="h-2 w-2 rounded-full bg-primary/20"></div>
+</div>
+<!-- Main Content Area Scrollable -->
+<div class="flex-1 overflow-y-auto px-6 pb-24">
+<!-- Friendly Illustration Container -->
+<div class="w-full @container py-4">
+<div class="w-full aspect-[4/3] rounded-xl overflow-hidden bg-primary/10 flex items-center justify-center border border-primary/20 relative">
+<div class="absolute inset-0 opacity-20 bg-[radial-gradient(circle_at_50%_50%,#13ec5b_0%,transparent_70%)]"></div>
+<div class="z-10 bg-center bg-no-repeat bg-contain w-3/4 h-3/4" data-alt="A friendly character celebrating holistic wellness and growth" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuDlfv6vht-JW2GjXiyv8BjbtC33hk-NT30Zxnllprrb1PBrYnXyzcKxvdSbb1TtsMJGNesABgaVh8FA30K9TxJY3NQJuq4FIIrZaJN6_BhW9MAkBHBDg_OvCiPnDYO1opwwOQJnFyDnxdI5gnPTLd4E5MpyImF06Q4m8-XY6cEPJfLQAG2weOjgK3SphhRJDbjvuimMn__r6-5Zr5HJf2dPEuDyDSu-EAVaQaa6m--esRlNbLpnrIxFbHhPx8d3XmESHseCzf-OKGA");'>
+</div>
+</div>
+</div>
+<!-- Welcome Text -->
+<div class="text-center py-6">
+<h1 class="text-slate-900 dark:text-slate-100 tracking-tight text-3xl font-extrabold leading-tight">Welcome to Your Journey</h1>
+<p class="text-slate-600 dark:text-slate-400 text-base font-normal leading-relaxed pt-2">Let's personalize your experience to help you achieve holistic wellness.</p>
+</div>
+<!-- Form Section -->
+<div class="space-y-6 mt-4">
+<!-- Name Input -->
+<div class="space-y-2">
+<label class="text-sm font-semibold text-slate-700 dark:text-slate-300 ml-1">What should we call you?</label>
+<input class="w-full h-14 px-4 rounded-xl bg-white dark:bg-primary/5 border border-slate-200 dark:border-primary/20 focus:border-primary focus:ring-1 focus:ring-primary outline-none transition-all text-slate-900 dark:text-slate-100" placeholder="Enter your name" type="text"/>
+</div>
+<!-- Goal Selection -->
+<div class="space-y-3">
+<label class="text-sm font-semibold text-slate-700 dark:text-slate-300 ml-1">What's your primary goal?</label>
+<div class="grid gap-3">
+<!-- Option 1 -->
+<button class="flex items-center p-4 rounded-xl border-2 border-primary bg-primary/10 transition-all text-left group">
+<div class="p-2 rounded-lg bg-primary/20 mr-4">
+<span class="material-symbols-outlined text-primary">auto_awesome</span>
+</div>
+<div class="flex-1">
+<span class="block font-bold text-slate-900 dark:text-slate-100">Build Habits</span>
+<span class="block text-xs text-slate-500 dark:text-slate-400">Consistency is key to success</span>
+</div>
+<span class="material-symbols-outlined text-primary">check_circle</span>
+</button>
+<!-- Option 2 -->
+<button class="flex items-center p-4 rounded-xl border border-slate-200 dark:border-primary/20 bg-white dark:bg-primary/5 transition-all text-left hover:border-primary/50 group">
+<div class="p-2 rounded-lg bg-slate-100 dark:bg-primary/10 mr-4">
+<span class="material-symbols-outlined text-slate-500 dark:text-primary/70">inventory_2</span>
+</div>
+<div class="flex-1">
+<span class="block font-bold text-slate-900 dark:text-slate-100">Manage Home</span>
+<span class="block text-xs text-slate-500 dark:text-slate-400">Inventory and home routines</span>
+</div>
+</button>
+<!-- Option 3 -->
+<button class="flex items-center p-4 rounded-xl border border-slate-200 dark:border-primary/20 bg-white dark:bg-primary/5 transition-all text-left hover:border-primary/50 group">
+<div class="p-2 rounded-lg bg-slate-100 dark:bg-primary/10 mr-4">
+<span class="material-symbols-outlined text-slate-500 dark:text-primary/70">favorite</span>
+</div>
+<div class="flex-1">
+<span class="block font-bold text-slate-900 dark:text-slate-100">Track Health</span>
+<span class="block text-xs text-slate-500 dark:text-slate-400">Monitor vitals and wellness</span>
+</div>
+</button>
+</div>
+</div>
+</div>
+</div>
+<!-- Sticky Bottom Navigation -->
+<div class="fixed bottom-0 left-0 right-0 p-6 bg-gradient-to-t from-background-light dark:from-background-dark via-background-light/95 dark:via-background-dark/95 to-transparent">
+<button class="w-full bg-primary hover:bg-primary/90 text-background-dark font-bold text-lg h-14 rounded-xl shadow-lg shadow-primary/20 flex items-center justify-center gap-2 transition-transform active:scale-95">
+        Continue
+        <span class="material-symbols-outlined">arrow_forward</span>
+</button>
+</div>
+</div>
+
+```</body></html>

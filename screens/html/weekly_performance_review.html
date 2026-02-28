@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@200;300;400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#13ec5b",
+                        "background-light": "#f6f8f6",
+                        "background-dark": "#102216",
+                    },
+                    fontFamily: {
+                        "display": ["Manrope"]
+                    },
+                    borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+                },
+            },
+        }
+    </script>
+<title>Weekly Performance Review</title>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background-light dark:bg-background-dark font-display text-slate-900 dark:text-slate-100 antialiased selection:bg-primary/30">
+<div class="relative flex min-h-screen w-full flex-col overflow-x-hidden pb-24">
+<!-- Header -->
+<header class="sticky top-0 z-10 flex items-center bg-background-light/80 dark:bg-background-dark/80 backdrop-blur-md p-4 justify-between border-b border-slate-200 dark:border-primary/10">
+<div class="flex size-10 shrink-0 items-center justify-center rounded-full hover:bg-slate-200 dark:hover:bg-primary/10 cursor-pointer transition-colors">
+<span class="material-symbols-outlined">arrow_back</span>
+</div>
+<h1 class="text-lg font-bold leading-tight tracking-tight flex-1 text-center">Weekly Review</h1>
+<div class="flex size-10 items-center justify-end">
+<button class="flex items-center justify-center rounded-full size-10 hover:bg-slate-200 dark:hover:bg-primary/10 cursor-pointer transition-colors">
+<span class="material-symbols-outlined text-primary">share</span>
+</button>
+</div>
+</header>
+<main class="flex-1 p-4 space-y-6">
+<!-- Summary Grid -->
+<section class="grid grid-cols-2 gap-4">
+<!-- Circular Completion Rate Chart -->
+<div class="col-span-2 flex flex-col items-center justify-center rounded-xl p-6 bg-slate-100 dark:bg-primary/5 border border-slate-200 dark:border-primary/10 relative overflow-hidden group">
+<div class="absolute top-0 right-0 p-4 opacity-20 group-hover:opacity-100 transition-opacity">
+<span class="material-symbols-outlined text-primary text-4xl">analytics</span>
+</div>
+<div class="relative flex items-center justify-center mb-4">
+<svg class="size-32 transform -rotate-90">
+<circle class="text-slate-200 dark:text-primary/10" cx="64" cy="64" fill="transparent" r="56" stroke="currentColor" stroke-width="8"></circle>
+<circle class="text-primary" cx="64" cy="64" fill="transparent" r="56" stroke="currentColor" stroke-dasharray="351.8" stroke-dashoffset="52.77" stroke-linecap="round" stroke-width="8"></circle>
+</svg>
+<div class="absolute inset-0 flex flex-col items-center justify-center">
+<span class="text-3xl font-extrabold text-slate-900 dark:text-slate-100 leading-none">85%</span>
+<span class="text-[10px] font-bold uppercase tracking-wider text-slate-500 dark:text-primary/60">Done</span>
+</div>
+</div>
+<div class="text-center">
+<p class="text-sm font-semibold text-slate-600 dark:text-slate-300">Completion Rate</p>
+<p class="text-xs font-bold text-primary mt-1 flex items-center justify-center gap-1">
+<span class="material-symbols-outlined text-xs">trending_up</span>
+                            +5.2% from last week
+                        </p>
+</div>
+</div>
+<!-- Current Streak -->
+<div class="flex flex-col gap-2 rounded-xl p-5 bg-slate-100 dark:bg-primary/5 border border-slate-200 dark:border-primary/10">
+<div class="flex items-center gap-2 mb-1">
+<span class="material-symbols-outlined text-primary text-xl">local_fire_department</span>
+<p class="text-xs font-bold uppercase tracking-wide text-slate-500 dark:text-primary/60">Streak</p>
+</div>
+<p class="text-2xl font-extrabold leading-tight">12 Days</p>
+<p class="text-xs font-medium text-primary">Active streak</p>
+</div>
+<!-- Inventory Management Status -->
+<div class="flex flex-col gap-2 rounded-xl p-5 bg-slate-100 dark:bg-primary/5 border border-slate-200 dark:border-primary/10">
+<div class="flex items-center gap-2 mb-1">
+<span class="material-symbols-outlined text-primary text-xl">inventory_2</span>
+<p class="text-xs font-bold uppercase tracking-wide text-slate-500 dark:text-primary/60">Inventory</p>
+</div>
+<p class="text-2xl font-extrabold leading-tight">92%</p>
+<p class="text-xs font-medium text-slate-500 dark:text-slate-400">Restock ready</p>
+</div>
+</section>
+<!-- Daily Activity Bar Chart -->
+<section class="rounded-xl p-5 bg-slate-100 dark:bg-primary/5 border border-slate-200 dark:border-primary/10">
+<div class="flex items-center justify-between mb-6">
+<h3 class="text-base font-bold leading-tight tracking-tight">Daily Activity</h3>
+<div class="bg-primary/10 px-2 py-1 rounded text-[10px] font-bold text-primary uppercase">32h Total</div>
+</div>
+<div class="grid grid-cols-7 gap-3 h-40 items-end px-1">
+<div class="flex flex-col items-center gap-2 h-full justify-end group">
+<div class="bg-primary/20 dark:bg-primary/10 rounded-t w-full transition-all group-hover:bg-primary" style="height: 60%;"></div>
+<p class="text-[10px] font-bold text-slate-500 dark:text-primary/60">M</p>
+</div>
+<div class="flex flex-col items-center gap-2 h-full justify-end group">
+<div class="bg-primary/20 dark:bg-primary/10 rounded-t w-full transition-all group-hover:bg-primary" style="height: 30%;"></div>
+<p class="text-[10px] font-bold text-slate-500 dark:text-primary/60">T</p>
+</div>
+<div class="flex flex-col items-center gap-2 h-full justify-end group">
+<div class="bg-primary/20 dark:bg-primary/10 rounded-t w-full transition-all group-hover:bg-primary" style="height: 40%;"></div>
+<p class="text-[10px] font-bold text-slate-500 dark:text-primary/60">W</p>
+</div>
+<div class="flex flex-col items-center gap-2 h-full justify-end group">
+<div class="bg-primary/20 dark:bg-primary/10 rounded-t w-full transition-all group-hover:bg-primary" style="height: 45%;"></div>
+<p class="text-[10px] font-bold text-slate-500 dark:text-primary/60">T</p>
+</div>
+<div class="flex flex-col items-center gap-2 h-full justify-end group">
+<div class="bg-primary rounded-t w-full" style="height: 100%;"></div>
+<p class="text-[10px] font-bold text-primary">F</p>
+</div>
+<div class="flex flex-col items-center gap-2 h-full justify-end group">
+<div class="bg-primary/20 dark:bg-primary/10 rounded-t w-full transition-all group-hover:bg-primary" style="height: 20%;"></div>
+<p class="text-[10px] font-bold text-slate-500 dark:text-primary/60">S</p>
+</div>
+<div class="flex flex-col items-center gap-2 h-full justify-end group">
+<div class="bg-primary/20 dark:bg-primary/10 rounded-t w-full transition-all group-hover:bg-primary" style="height: 35%;"></div>
+<p class="text-[10px] font-bold text-slate-500 dark:text-primary/60">S</p>
+</div>
+</div>
+</section>
+<!-- AI Suggestions Section -->
+<section class="space-y-4">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-primary">auto_awesome</span>
+<h3 class="text-base font-bold leading-tight tracking-tight">AI Insights for Next Week</h3>
+</div>
+<div class="space-y-3">
+<div class="p-4 rounded-xl bg-slate-900 text-white dark:bg-slate-100 dark:text-slate-900 flex gap-4 items-start shadow-xl">
+<div class="size-10 shrink-0 flex items-center justify-center rounded-lg bg-primary/20">
+<span class="material-symbols-outlined text-primary">lightbulb</span>
+</div>
+<div>
+<p class="text-sm font-bold mb-1">Boost Morning Routine</p>
+<p class="text-xs opacity-80 leading-relaxed">Based on your activity, starting 15 mins earlier on Tuesdays could increase overall productivity by 12%.</p>
+</div>
+</div>
+<div class="p-4 rounded-xl border border-slate-200 dark:border-primary/10 bg-slate-100 dark:bg-primary/5 flex gap-4 items-start">
+<div class="size-10 shrink-0 flex items-center justify-center rounded-lg bg-blue-500/10">
+<span class="material-symbols-outlined text-blue-500">water_drop</span>
+</div>
+<div>
+<p class="text-sm font-bold mb-1">Optimize Inventory</p>
+<p class="text-xs text-slate-500 dark:text-slate-400 leading-relaxed">You're running low on Vitamin D. Add to shopping list for Sunday morning restock.</p>
+</div>
+<button class="ml-auto size-8 flex items-center justify-center rounded-full bg-slate-200 dark:bg-primary/20 text-slate-900 dark:text-primary">
+<span class="material-symbols-outlined text-sm">add</span>
+</button>
+</div>
+<div class="p-4 rounded-xl border border-slate-200 dark:border-primary/10 bg-slate-100 dark:bg-primary/5 flex gap-4 items-start">
+<div class="size-10 shrink-0 flex items-center justify-center rounded-lg bg-orange-500/10">
+<span class="material-symbols-outlined text-orange-500">bedtime</span>
+</div>
+<div>
+<p class="text-sm font-bold mb-1">Consistency Check</p>
+<p class="text-xs text-slate-500 dark:text-slate-400 leading-relaxed">Sleep consistency dropped on weekends. Try to aim for a 10:30 PM bedtime to maintain energy levels.</p>
+</div>
+</div>
+</div>
+</section>
+</main>
+<!-- Bottom Navigation Bar -->
+<nav class="fixed bottom-0 left-0 right-0 z-20 flex border-t border-slate-200 dark:border-primary/20 bg-background-light dark:bg-background-dark/95 backdrop-blur-xl px-4 pb-6 pt-3 justify-around items-center">
+<a class="flex flex-col items-center gap-1 text-slate-400 hover:text-primary transition-colors" href="#">
+<span class="material-symbols-outlined">calendar_today</span>
+<span class="text-[10px] font-bold uppercase tracking-wider">Today</span>
+</a>
+<a class="flex flex-col items-center gap-1 text-primary" href="#">
+<span class="material-symbols-outlined font-variation-fill">bar_chart</span>
+<span class="text-[10px] font-bold uppercase tracking-wider">Review</span>
+</a>
+<a class="flex flex-col items-center gap-1 text-slate-400 hover:text-primary transition-colors" href="#">
+<span class="material-symbols-outlined">inventory_2</span>
+<span class="text-[10px] font-bold uppercase tracking-wider">Inventory</span>
+</a>
+<a class="flex flex-col items-center gap-1 text-slate-400 hover:text-primary transition-colors" href="#">
+<span class="material-symbols-outlined">person</span>
+<span class="text-[10px] font-bold uppercase tracking-wider">Profile</span>
+</a>
+</nav>
+</div>
+</body></html>

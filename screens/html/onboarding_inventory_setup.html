@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#13ec5b",
+                        "background-light": "#f6f8f6",
+                        "background-dark": "#102216",
+                    },
+                    fontFamily: {
+                        "display": ["Manrope"]
+                    },
+                    borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+                },
+            },
+        }
+    </script>
+<title>Onboarding Inventory Setup</title>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background-light dark:bg-background-dark font-display text-slate-900 dark:text-slate-100 min-h-screen">
+<div class="relative flex h-auto min-h-screen w-full max-w-[430px] mx-auto flex-col bg-background-light dark:bg-background-dark overflow-x-hidden border-x border-slate-200 dark:border-slate-800">
+<!-- Top Bar -->
+<div class="flex items-center p-4 pb-2 justify-between">
+<div class="text-slate-900 dark:text-slate-100 flex size-12 shrink-0 items-center justify-start cursor-pointer">
+<span class="material-symbols-outlined">arrow_back_ios</span>
+</div>
+<h2 class="text-slate-900 dark:text-slate-100 text-lg font-bold leading-tight tracking-tight flex-1 text-center pr-12">Inventory Setup</h2>
+</div>
+<!-- Progress Section -->
+<div class="flex flex-col gap-3 p-6">
+<div class="flex gap-6 justify-between items-end">
+<p class="text-slate-900 dark:text-slate-100 text-base font-semibold leading-normal">Onboarding Progress</p>
+<p class="text-primary text-sm font-bold leading-normal">Step 3 of 5</p>
+</div>
+<div class="rounded-full bg-slate-200 dark:bg-slate-800 h-2 w-full overflow-hidden">
+<div class="h-full rounded-full bg-primary" style="width: 60%;"></div>
+</div>
+</div>
+<!-- Header Text -->
+<div class="px-6 py-4">
+<h3 class="text-slate-900 dark:text-slate-100 tracking-tight text-3xl font-extrabold leading-tight text-center">Select items you track daily</h3>
+<p class="text-slate-600 dark:text-slate-400 text-base font-normal leading-relaxed pt-3 text-center">Choose common items you'd like to manage in your inventory to get started.</p>
+</div>
+<!-- Grid of Items -->
+<div class="grid grid-cols-2 gap-4 p-6">
+<!-- Item 1: Selected State -->
+<div class="relative group cursor-pointer">
+<div class="bg-cover bg-center flex flex-col gap-3 rounded-xl justify-end p-4 aspect-square border-2 border-primary ring-4 ring-primary/20" data-alt="Fresh cold milk in a glass bottle" style='background-image: linear-gradient(0deg, rgba(0, 0, 0, 0.7) 0%, rgba(0, 0, 0, 0) 60%), url("https://lh3.googleusercontent.com/aida-public/AB6AXuBnIL_yNdkqfGblOo3OjjW2Tg3L-__LJR-I2QyA-LrsnrRpgMtakcr2efItLq8WEAOXUMFbGKYykskx6CHNdGmfSyMWUlxKtjdQdAtI3fz29lKsMtqTz-bsfim8em2BPJ_4kuXF0mtH9RS6pgK6RqyB5FPkOBt4gGHND-42y_TosuVnOihUARphtj76MoambrSc7yNHELFP8eCvlzUL9wKR16j-BnUO_anFA-6-XDpoqLGiaW9-ESyol2uIljSInJNXR8a3OFUQOUg");'>
+<p class="text-white text-base font-bold leading-tight line-clamp-2">Milk</p>
+</div>
+<div class="absolute top-2 right-2 bg-primary rounded-full p-1 shadow-lg">
+<span class="material-symbols-outlined text-background-dark text-sm font-bold">check</span>
+</div>
+</div>
+<!-- Item 2 -->
+<div class="bg-cover bg-center flex flex-col gap-3 rounded-xl justify-end p-4 aspect-square border-2 border-transparent hover:border-primary/50 transition-colors" data-alt="Assorted multivitamins and health supplement capsules" style='background-image: linear-gradient(0deg, rgba(0, 0, 0, 0.7) 0%, rgba(0, 0, 0, 0) 60%), url("https://lh3.googleusercontent.com/aida-public/AB6AXuBfCGGNHXHATxAtSq_B4a68oy32MtBndlUp1Dv0vycAoAvGojHNXA1JHVBpAFpayklXVyFiMbLKfuM56KR09et8MX9_CCVXj-BFEDmghXrX3mxnCgDiIgH6jIQBWEqPlhg126mYBdflCau1QOxKNxYOq03Uqi0T_I_KbZ0tKOkIrbfOPZawkIpyVrGrNgcHpEsCJv4gY_h_xyS7ebkdvnaY0iYlo0i7kBZh_X96zGr0pPjjTzw2_LVGy_QAmOHYy1AQSEj89aKMQAo");'>
+<p class="text-white text-base font-bold leading-tight line-clamp-2">Multivitamins</p>
+</div>
+<!-- Item 3: Selected State -->
+<div class="relative group cursor-pointer">
+<div class="bg-cover bg-center flex flex-col gap-3 rounded-xl justify-end p-4 aspect-square border-2 border-primary ring-4 ring-primary/20" data-alt="A tub of high quality protein powder" style='background-image: linear-gradient(0deg, rgba(0, 0, 0, 0.7) 0%, rgba(0, 0, 0, 0) 60%), url("https://lh3.googleusercontent.com/aida-public/AB6AXuAEnpvZfLB0tHzyr3hBhHNTzU5AdoWBmMXHIw8-viPZBpg3OneJ2jVs2yPvjgNpOD-QEyrQhlQ8gq2hpW4OlQBn5EmDX60LHyDNeZ2fC77Y20P3XMygLnIcBh5KelH2M33EHdrC2plI1SgPuqAOkrPmqNDkORPmspiS7bOzJZxZIkLCWQmknRpEjgUx6qFZ8CNX3oSEZ2HFXBpkRKIvD1sO9bNKIrHdrfFqgQDwGlhp4S8VlbUzGXOtqrj77wbXBgMdlNXDQC-fTZ4");'>
+<p class="text-white text-base font-bold leading-tight line-clamp-2">Protein Powder</p>
+</div>
+<div class="absolute top-2 right-2 bg-primary rounded-full p-1 shadow-lg">
+<span class="material-symbols-outlined text-background-dark text-sm font-bold">check</span>
+</div>
+</div>
+<!-- Item 4 -->
+<div class="bg-cover bg-center flex flex-col gap-3 rounded-xl justify-end p-4 aspect-square border-2 border-transparent hover:border-primary/50 transition-colors" data-alt="A carton of fresh organic farm eggs" style='background-image: linear-gradient(0deg, rgba(0, 0, 0, 0.7) 0%, rgba(0, 0, 0, 0) 60%), url("https://lh3.googleusercontent.com/aida-public/AB6AXuDp36V8eAN9Bvgn99eDlD1zz2AaFrmxzx81RmveYm0CirjpHfYDm4ZSQsTNXL8MpKnWicyUTHJyecimNMqe6qWmhRgXkdQGsahjZO9kUOuWNRxJOs0IrxqXh_Up5GCuTuNVo4THKtYLH5HTq9JkmpA3J3ZkBXMxB3KbCJGbknsNIUIye8sH4XbRjWjDhgt6aH0WtR-PX_muIOAlTKQr7ZPHWsYUl8jMd13BOX-XPW7sxhzsthgOAOWcdTPWAFLuZhPPWKH1qTBY3NY");'>
+<p class="text-white text-base font-bold leading-tight line-clamp-2">Eggs</p>
+</div>
+<!-- Item 5 -->
+<div class="bg-cover bg-center flex flex-col gap-3 rounded-xl justify-end p-4 aspect-square border-2 border-transparent hover:border-primary/50 transition-colors" data-alt="A bowl of healthy morning oats" style='background-image: linear-gradient(0deg, rgba(0, 0, 0, 0.7) 0%, rgba(0, 0, 0, 0) 60%), url("https://lh3.googleusercontent.com/aida-public/AB6AXuAoR6AcHFNFs0zSpBICGsPGZQQAsYtynIGjCODQp1_twashc0PU2l5jp7Xan_FTzYKB3NkSc5U7kcOwlN_gXOEBtsoAuIrT0R8Mlb73T1BlwnYXABkM67cbTsN5AHdOvXS_EJpMra58VTFbahkiO5qJ9dXUGLk1ntBvHqqFODxsGLXFxskhT_CsVF_Sl-g7YF3KB0R4fZsxOi9kyouo112JX5NsqhR5g0j_MZ4VJO--HpPrG4INnLDYr4aYfgaAqqyhPIuMreeqhNE");'>
+<p class="text-white text-base font-bold leading-tight line-clamp-2">Oats</p>
+</div>
+<!-- Item 6 -->
+<div class="bg-cover bg-center flex flex-col gap-3 rounded-xl justify-end p-4 aspect-square border-2 border-transparent hover:border-primary/50 transition-colors" data-alt="Omega 3 fish oil golden softgels" style='background-image: linear-gradient(0deg, rgba(0, 0, 0, 0.7) 0%, rgba(0, 0, 0, 0) 60%), url("https://lh3.googleusercontent.com/aida-public/AB6AXuC5cgL4Gs6_BbdmNqcjQmdg7EPreIy85ezp-A7Be5GxR1nsQjoo-OGfqNcEELXsNvKKidSjMXQXLTnsiKUGvVyXpb2TUKcikxn0bKNa4Fb_3WtF6LzxyZFJMRY9YMySkAkOU0z8DAP5I9L_h6IkHnsSLNM4GZB31efmMqjS4E_Y5UXNAbPo6NZSmp08F5dXIf6z-qtpi0_oCpcqksT5b_P3DxGUveJMPK69yvkiCRrjNZ5AiKaGnKC1xPDee827gXelsTDFviDZDG8");'>
+<p class="text-white text-base font-bold leading-tight line-clamp-2">Omega-3</p>
+</div>
+</div>
+<!-- Sticky Footer Action -->
+<div class="mt-auto p-6 bg-gradient-to-t from-background-light dark:from-background-dark via-background-light dark:via-background-dark to-transparent pt-12">
+<button class="w-full bg-primary text-background-dark text-lg font-bold py-4 rounded-xl shadow-lg shadow-primary/20 active:scale-95 transition-transform">
+                Continue (2 items selected)
+            </button>
+<button class="w-full mt-3 text-slate-500 dark:text-slate-400 text-base font-semibold py-2">
+                I'll add my own items later
+            </button>
+</div>
+<div class="h-8 bg-background-light dark:bg-background-dark"></div>
+</div>
+</body></html>
